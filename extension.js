@@ -40,6 +40,13 @@ function activate(context) {
 	gitPush.text = "Git Push";
 	gitPush.show();
 
+	// open Terminal
+
+	let openTerminal = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
+	openTerminal.command = 'extension.runTerminal';
+	openTerminal.text = "Terminal";
+	openTerminal.show();
+
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
@@ -75,6 +82,11 @@ function activate(context) {
 	let runGitPush = vscode.commands.registerCommand('extension.runGitPush', function () {
 		runCommand("git Push");
 		vscode.window.showInformationMessage('Git pushing!');
+	});
+
+
+	let openTerminalCommand = vscode.commands.registerCommand('extension.runTerminal', function () {
+		runCommand("");
 	});
 
 	//
