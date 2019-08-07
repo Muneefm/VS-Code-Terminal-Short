@@ -11,6 +11,7 @@ const vscode = require('vscode');
 
 function activate(context) {
 
+	console.log("activate called");
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "short-run" is now active!');
@@ -90,7 +91,11 @@ function activate(context) {
 	});
 
 	//
-	
+	context.subscriptions.push(rna);
+	context.subscriptions.push(rni);
+	context.subscriptions.push(rnDebug);
+	context.subscriptions.push(gitAdd);
+
 	context.subscriptions.push(disposable);
 }
 exports.activate = activate;
