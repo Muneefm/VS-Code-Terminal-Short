@@ -15,35 +15,41 @@ function activate(context) {
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "short-run" is now active!');
-	let rna = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
-	let rni = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
+	let rna = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
+	let rni = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
 	rni.command = 'extension.runRNI';
 	rna.command = 'extension.runRNA';
-	rni.text = "Run RNI";
-	rna.text = "Run RNA";
+	rni.text = "Run RNIOS";
+	rna.text = "Run RNAndroid";
 	rna.show();
 	rni.show();
 	
 	// React native shake screen
-	let rnDebug = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
+	let rnDebug = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
 	rnDebug.command = 'extension.runDebug';
 	rnDebug.text = "RN Debug";
 	rnDebug.show();
 
-	let gitAdd = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
+	let gitAdd = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
 	gitAdd.command = 'extension.runGitAdd';
 	gitAdd.text = "Git Add";
 	gitAdd.show();
 
 
-	let gitPush = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
+	let gitPush = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
 	gitPush.command = 'extension.runGitPush';
 	gitPush.text = "Git Push";
 	gitPush.show();
 
+	// adb devices
+	let runDevices = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
+	runDevices.command = 'extension.runAdbDevices';
+	runDevices.text = "Android Devices";
+	runDevices.show();
+
 	// open Terminal
 
-	let openTerminal = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
+	let openTerminal = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
 	openTerminal.command = 'extension.runTerminal';
 	openTerminal.text = "Terminal";
 	openTerminal.show();
@@ -86,9 +92,14 @@ function activate(context) {
 	});
 
 
+	let runAdbDevices = vscode.commands.registerCommand('extension.runAdbDevices', function () {
+		runCommand("adb devices");
+	});
+
 	let openTerminalCommand = vscode.commands.registerCommand('extension.runTerminal', function () {
 		runCommand("");
 	});
+
 
 	//
 	context.subscriptions.push(rna);
