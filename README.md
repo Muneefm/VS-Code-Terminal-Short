@@ -20,6 +20,8 @@ Initial release of ...
 
 5 buttons
 
+Status Bar buttons
+![alt text](https://github.com/Muneefm/VS-Code-Terminal-Short/blob/master/image/image.png)
 
 
 **Enjoy!**
